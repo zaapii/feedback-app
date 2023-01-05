@@ -15,7 +15,7 @@ export const FeedbackProvider = ({children}) => {
   }, [])
 
   const fetchFeedback = async () => {
-    const response = await fetch('/feedback?_sort=id&_order=desc')
+    const response = await fetch('https://mockend.com/zaapii/feedback-app/feedback?id_order=desc')
     const data = await response.json()
     setTimeout(() => {
       setFeedback(data)
@@ -25,7 +25,7 @@ export const FeedbackProvider = ({children}) => {
   
   const deleteFeedback = async (id) => {
     if (window.confirm("Are you sure?")) {
-      await fetch(`/feedback/${id}`, { method: 'DELETE' })
+      await fetch(`https://mockend.com/zaapii/feedback-app/feedback/${id}`, { method: 'DELETE' })
 
       setFeedback(feedback.filter((item) => item.id !== id));
     }
@@ -33,7 +33,7 @@ export const FeedbackProvider = ({children}) => {
 
   const addFeedback = async (newFeedback) => {
 
-    const response = await fetch('/feedback', {
+    const response = await fetch('https://mockend.com/zaapii/feedback-app/feedback', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ export const FeedbackProvider = ({children}) => {
 
   const updateFeedback = async (id, newItem) => {
 
-    const response = await fetch(`/feedback/${id}`, {
+    const response = await fetch(`https://mockend.com/zaapii/feedback-app/feedback/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
