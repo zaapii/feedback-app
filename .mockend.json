@@ -2,6 +2,6 @@
   "Feedback": {
     "_": { "items": 20 },
     "title": { "string": {} },
-    "rating": { "integer": {} }
+    "rating": { "int": {} }
   }
 }
