@@ -25,14 +25,16 @@ export const FeedbackProvider = ({children}) => {
   
   const deleteFeedback = async (id) => {
     if (window.confirm("Are you sure?")) {
+      setLoading(true)
       await fetch(`https://mockend.com/zaapii/feedback-app/feedback/${id}`, { method: 'DELETE' })
 
       setFeedback(feedback.filter((item) => item.id !== id));
+      setLoading(false)
     }
   };
 
   const addFeedback = async (newFeedback) => {
-
+    setLoading(true)
     const response = await fetch('https://mockend.com/zaapii/feedback-app/feedback', {
       method: 'POST',
       headers: {
@@ -43,6 +45,7 @@ export const FeedbackProvider = ({children}) => {
 
     const data = await response.json()
     setFeedback([data, ...feedback])
+    setLoading(false)
   };
 
   const editFeedback = (item) => {
@@ -53,7 +56,7 @@ export const FeedbackProvider = ({children}) => {
   }
 
   const updateFeedback = async (id, newItem) => {
-
+    setLoading(true)
     const response = await fetch(`https://mockend.com/zaapii/feedback-app/feedback/${id}`, {
       method: 'PUT',
       headers: {
@@ -67,6 +70,7 @@ export const FeedbackProvider = ({children}) => {
     setFeedback(
       feedback.map((item) => item.id === id ? { ...item, ...data } : item
     ))
+    setLoading(false)
   }
 
   return <FeedbackContext.Provider value={{
