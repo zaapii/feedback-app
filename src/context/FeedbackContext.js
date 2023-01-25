@@ -20,7 +20,7 @@ export const FeedbackProvider = ({children}) => {
     setTimeout(() => {
       setFeedback(data)
       setLoading(false)
-    }, 2000);
+    }, 1500);
   }
   
   const deleteFeedback = async (id) => {
